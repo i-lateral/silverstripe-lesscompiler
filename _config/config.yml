@@ -1,0 +1,7 @@
+---
+Name: lesscompiler
+After: 'framework/*','cms/*'
+---
+Controller:
+  extensions:
+    - LessCompilerControllerExtension
