@@ -14,6 +14,10 @@ class LessCompilerControllerExtension extends Extension
         
         // Only check and compile either on dev, or on all environments (if set)
         if (!$only_dev || $only_dev && Director::isDev()) {
+
+            // Allow extensions for before less is compiled
+            $this->owner->extend("onBeforeLessCompiler");
+
             $files = LessCompilerConfig::config()->file_mappings;
             $root_path = LessCompilerConfig::config()->root_path;
             $temp_folder = TEMP_FOLDER;
@@ -77,6 +81,9 @@ class LessCompilerControllerExtension extends Extension
                     }
                 }
             }
+
+            // Allow extensions for after less has compiled
+            $this->owner->extend("onAfterLessCompiler");
         }
     }
     
