@@ -94,3 +94,51 @@ config.yml
 _config.php
 
     LessCompilerConfig::config()->root_path = "../../imports";
+
+## Before and After Compile extensions
+
+If you need to perform custom functions just before or after Less Compiler runs
+you can do this using the `onBeforeLessCompiler` and `onAfterLessCompiler`
+extension calls.
+
+**NOTE** These calls are added to controller, so rather than adding an extension
+to LessCompiler itself, you only need to add your custom code to an extension to
+Controller. EG:
+
+app/code/extensions/AppControllerExtension.php
+
+````
+<?php
+
+class AppControllerExtension extends Extension
+{    
+    public function onBeforeLessCompiler()
+    {
+        // pre compiler code goes here
+    }
+
+    public function onAfterLessCompiler()
+    {
+        // post compiler code goes here
+    }
+}
+````
+
+app/_config/config.yml
+
+````
+---
+Name: app
+After: 'framework/*','cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SSViewer:
+  theme: 'simple'
+
+# Extensions
+Controller:
+  extensions:
+    - AppControllerExtension
+````
