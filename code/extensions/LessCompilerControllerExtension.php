@@ -10,8 +10,10 @@ class LessCompilerControllerExtension extends Extension
      * 
      */
     public function onBeforeInit() {
-        // Only check and compile when on dev
-        if (Director::isDev()) {
+        $only_dev = LessCompilerConfig::config()->only_dev;
+        
+        // Only check and compile either on dev, or on all environments (if set)
+        if (!$only_dev || $only_dev && Director::isDev()) {
             $files = LessCompilerConfig::config()->file_mappings;
             $root_path = LessCompilerConfig::config()->root_path;
             $temp_folder = TEMP_FOLDER;

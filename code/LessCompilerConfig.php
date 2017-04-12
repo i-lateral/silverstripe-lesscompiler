@@ -6,7 +6,7 @@
  */
 class LessCompilerConfig extends Object
 {
-    
+
     /**
      * File mappings that are to be compiled. This is a multidimestional
      * array listing the input file as the key and the output file as
@@ -34,25 +34,35 @@ class LessCompilerConfig extends Object
      * @var array
      * @config
      */
-     private static $file_mappings = array();
+    private static $file_mappings = array();
      
-     /**
-      * Do we want to compress the output files?
-      * 
-      * @var Boolean
-      * @config
-      */
-     private static $compress = true;
+    /**
+     * Do we want to compress the output files?
+     * 
+     * @var Boolean
+     * @config
+     */
+    private static $compress = true;
      
-     /**
-      * The url root to prepend to any relative image or
-      * @import urls in the .less file.
-      * 
-      * This defaults to "../" as it is assumed that all images are
-      * located in a directory above the less files
-      * 
-      * @var String
-      * @config
-      */
-     private static $root_path = "../";
+    /**
+     * The url root to prepend to any relative image or
+     * @import urls in the .less file.
+     * 
+     * This defaults to "../" as it is assumed that all images are
+     * located in a directory above the less files
+     * 
+     * @var String
+     * @config
+     */
+    private static $root_path = "../";
+
+    /**
+     * Should less files be compiled only on dev? If set to false
+     * less files will be compiled on all environments (dev,
+     * stage, live)
+     * 
+     * @var Boolean
+     * @config
+     */
+    private static $only_dev = true;
 }
