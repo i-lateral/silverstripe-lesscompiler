@@ -4,7 +4,7 @@
  * Simple config class to hold global settings
  * 
  */
-class LessCompilerConfig extends Object
+class LessCompilerConfig extends SS_Object
 {
 
     /**
